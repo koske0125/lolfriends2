@@ -6,7 +6,13 @@
     <table class="table">
       <tr>
         <td>プロフィール画像</td>
-        <td></td>
+        <td>
+          <% if @user.profile_image.attached? %>
+            <%= image_tag @user.profile_image, size: "64x64", class: "rounded-circle" %>
+          <% else %>
+            <%= image_tag "no_image", size: "64x64", class: "rounded-circle" %>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <td>サモナーネーム</td>
@@ -14,7 +20,7 @@
       </tr>
       <tr>
         <td>サモナーネーム公開設定</td>
-        <td><%= @user.is_published %></td>
+        <td><%= @user.is_published_i18n %></td>
       </tr>
       <tr>
         <td>ユーザー認証</td>

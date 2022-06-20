@@ -1,0 +1,7 @@
+ja:
+  enums:
+    user:
+      is_published:
+        closed: "非公開"
+        limited: "相互フォローにのみ公開"
+        opened: "全体に公開"
