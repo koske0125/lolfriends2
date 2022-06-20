@@ -1,0 +1,30 @@
+<div class="container-fluid">
+
+  <div class="col-12 col-md-8 col-lg-6 col-xl-3 mx-auto mt-3">
+    <h2 class="mt-3">プロフィール</h2>
+
+    <table class="table">
+      <tr>
+        <td>プロフィール画像</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>サモナーネーム</td>
+        <td><%= @user.summoner_name %></td>
+      </tr>
+      <tr>
+        <td>サモナーネーム公開設定</td>
+        <td><%= @user.is_published %></td>
+      </tr>
+      <tr>
+        <td>ユーザー認証</td>
+        <td><% if @user.authenticate == false %>未認証<% else %> 認証済み <% end %></td>
+      </tr>
+      <tr>
+        <td>最終ログイン日時</td>
+        <td><%= @user.current_sign_in_at.strftime('%Y/%m/%d %R') %></td>
+      </tr>
+    </table>
+
+  </div>
+</div>
