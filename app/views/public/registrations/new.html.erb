@@ -12,11 +12,11 @@
 
     <div class="mb-3">
       <%= f.label "サモナーネーム公開設定", class: "form-label" %><br />
-      <%= f.radio_button :is_published, "0", class: "form-check-input" %>
+      <%= f.radio_button :is_published, "closed", class: "form-check-input" %>
       <%= f.label "非公開", class: "form-check-label" %>
-      <%= f.radio_button :is_published, "1", class: "form-check-input" %>
+      <%= f.radio_button :is_published, "limited", class: "form-check-input" %>
       <%= f.label "相互フォローにのみ公開", class: "form-check-label" %>
-      <%= f.radio_button :is_published, "2", class: "form-check-input" %>
+      <%= f.radio_button :is_published, "opened", class: "form-check-input" %>
       <%= f.label "全体に公開", class: "form-check-label" %>
     </div>
 

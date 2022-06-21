@@ -1,0 +1,42 @@
+<div class="container-fluid">
+
+  <div class="col-12 col-md-8 col-lg-6 col-xl-4 mx-auto mt-3">
+    <h2 class="mt-3">プロフィール編集</h2>
+
+    <%= form_with model: @user, url: public_user_path(@user), method: :patch do |f| %>
+    <table class="table">
+      <tr>
+        <td>プロフィール画像</td>
+        <td>
+          <%= f.file_field :profile_image, accept: "image/*", class: "form-control" %>
+        </td>
+      </tr>
+      <tr>
+        <td>サモナーネーム</td>
+        <td><%= f.text_field :summoner_name, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <td>サモナーネーム公開設定</td>
+        <td>
+          <%= f.radio_button :is_published, "closed", class: "form-check-input" %>
+          <%= f.label "非公開", class: "form-check-label" %>
+          <%= f.radio_button :is_published, "limited", class: "form-check-input" %>
+          <%= f.label "相互フォローにのみ公開", class: "form-check-label" %>
+          <%= f.radio_button :is_published, "opened", class: "form-check-input" %>
+          <%= f.label "全体に公開", class: "form-check-label" %>
+        </td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= f.email_field :email, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <td>パスワード</td>
+        <td><%= f.password_field :password, class: "form-control" %></td>
+      </tr>
+    </table>
+
+    <div class="text-center"><%= f.submit "プロフィール更新", class: "btn btn-success" %></div>
+    <% end %>
+  </div>
+</div>
