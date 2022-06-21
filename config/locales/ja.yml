@@ -5,3 +5,8 @@ ja:
         closed: "非公開"
         limited: "相互フォローにのみ公開"
         opened: "全体に公開"
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      blank: を入力してください
+      too_short: は%{count}文字以上で入力してください
