@@ -17,7 +17,7 @@
           <% if @user.profile_image.attached? %>
             <%= image_tag @user.profile_image, size: "32x32", class: "rounded-circle me-2" %>
           <% else %>
-            <%= image_tag asset_path("no_image.jpg", size: "32x32"), class: "rounded-circle me-2" %>
+            <%= image_tag asset_path("/images/no_image.jpg", size: "32x32"), class: "rounded-circle me-2" %>
           <% end %>
           <%= current_user.summoner_name %></a>
 
