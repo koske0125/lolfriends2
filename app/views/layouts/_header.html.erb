@@ -8,6 +8,7 @@
           <li><a href="#" class="nav-link px-2 text-white">価格設定</a></li>
           <li><a href="#" class="nav-link px-2 text-white">FAQ</a></li>
           <li><a href="#" class="nav-link px-2 text-white">概要</a></li>
+          <li><%= link_to "新規投稿",  new_public_friend_path, class:"nav-link px-2 text-white" %></li>
         </ul>
 
         <% if user_signed_in? %>

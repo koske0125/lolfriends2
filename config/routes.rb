@@ -20,7 +20,9 @@ devise_for :admin, controllers: {
 # get '/customers/is_deleted' => 'public/customers#is_deleted'
   namespace :public, path: "" do
     get '/' => 'homes#top'
+    get '/friends/search' => 'friends#serach'
     resources :users, only: [:edit, :show, :update]
+    resources :friends
 
   end
 

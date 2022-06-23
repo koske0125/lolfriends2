@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_20_111740) do
+ActiveRecord::Schema.define(version: 2022_06_23_080125) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,39 @@ ActiveRecord::Schema.define(version: 2022_06_20_111740) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "favorite_champion"
+    t.integer "favorite_champion2"
+    t.integer "fovorite_champion3"
+    t.text "introduction", null: false
+    t.integer "rank", null: false
+    t.boolean "is_rank", default: false, null: false
+    t.boolean "is_normal", default: false, null: false
+    t.boolean "is_beginner", default: false, null: false
+    t.boolean "is_coaching", default: false, null: false
+    t.boolean "is_coached", default: false, null: false
+    t.boolean "is_clash", default: false, null: false
+    t.boolean "good_at_top", default: false, null: false
+    t.boolean "good_at_jg", default: false, null: false
+    t.boolean "good_at_mid", default: false, null: false
+    t.boolean "good_at_adc", default: false, null: false
+    t.boolean "good_at_sup", default: false, null: false
+    t.string "active_time", default: "f", null: false
+    t.string "twitter"
+    t.integer "vc_status", default: 0, null: false
+    t.boolean "vc_discord", default: false, null: false
+    t.boolean "vc_skype", default: false, null: false
+    t.boolean "vc_leaguevoice", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "bad_at_top", default: false
+    t.boolean "bad_at_jg", default: false
+    t.boolean "bad_at_mid", default: false
+    t.boolean "bad_at_adc", default: false
+    t.boolean "bad_at_sup", default: false
   end
 
   create_table "users", force: :cascade do |t|
