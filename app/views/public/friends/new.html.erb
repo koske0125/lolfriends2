@@ -43,20 +43,83 @@
         <td>募集目的</td>
         <td>
           <%= f.check_box :is_rank, class: "form-check-input" %>
-          <%= f.label "ランク", class: "form-check-label" %>
-      <%= f.radio_button :is_published, "limited", class: "form-check-input" %>
-      <%= f.label "相互フォローにのみ公開", class: "form-check-label" %>
-      <%= f.radio_button :is_published, "opened", class: "form-check-input" %>
-      <%= f.label "全体に公開", class: "form-check-label" %>
+          <%= f.label "ランク", class: "form-check-label me-2" %>
+          <%= f.check_box :is_normal, class: "form-check-input" %>
+          <%= f.label "ノーマル", class: "form-check-label me-2" %>
+          <%= f.check_box :is_beginner, class: "form-check-input" %>
+          <%= f.label "初心者", class: "form-check-label me-2" %><br />
+          <%= f.check_box :is_coaching, class: "form-check-input" %>
+          <%= f.label "コーチングしたい", class: "form-check-label me-2" %>
+          <%= f.check_box :is_coached, class: "form-check-input" %>
+          <%= f.label "コーチングを受けたい", class: "form-check-label me-2" %>
+          <%= f.check_box :is_clash, class: "form-check-input" %>
+          <%= f.label "Clash", class: "form-check-label" %>
         </td>
       </tr>
       <tr>
-        <td>パスワード</td>
-        <td><%= f.password_field :password, class: "form-control" %></td>
+        <td>得意なレーン</td>
+        <td>
+          <%= f.check_box :good_at_top, class: "form-check-input" %>
+          <%= f.label "TOP", class: "form-check-label me-2" %>
+          <%= f.check_box :good_at_jg, class: "form-check-input" %>
+          <%= f.label "JG", class: "form-check-label me-2" %>
+          <%= f.check_box :good_at_mid, class: "form-check-input" %>
+          <%= f.label "MID", class: "form-check-label me-2" %>
+          <%= f.check_box :good_at_adc, class: "form-check-input" %>
+          <%= f.label "ADC", class: "form-check-label me-2" %>
+          <%= f.check_box :good_at_sup, class: "form-check-input" %>
+          <%= f.label "SUP", class: "form-check-label" %>
+        </td>
       </tr>
+      <tr>
+        <td>苦手なレーン</td>
+        <td>
+          <%= f.check_box :bad_at_top, class: "form-check-input" %>
+          <%= f.label "TOP", class: "form-check-label me-2" %>
+          <%= f.check_box :bad_at_jg, class: "form-check-input" %>
+          <%= f.label "JG", class: "form-check-label me-2" %>
+          <%= f.check_box :bad_at_mid, class: "form-check-input" %>
+          <%= f.label "MID", class: "form-check-label me-2" %>
+          <%= f.check_box :bad_at_adc, class: "form-check-input" %>
+          <%= f.label "ADC", class: "form-check-label me-2" %>
+          <%= f.check_box :bad_at_sup, class: "form-check-input" %>
+          <%= f.label "SUP", class: "form-check-label" %>
+        </td>
+      </tr>
+      <tr>
+        <td>活動時間帯</td>
+        <td><%= f.text_field :active_time, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <td>Twitter(未記入可)</td>
+        <td><%= f.text_field :twitter, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <td>ボイスチャット</td>
+        <td>
+          <%= f.radio_button :vc_status, "unavailable", class: "form-check-input" %>
+          <%= f.label "VC不可", class: "form-check-label me-2" %>
+          <%= f.radio_button :vc_status, "listening_only", class: "form-check-input" %>
+          <%= f.label "聴き専", class: "form-check-label me-2" %>
+          <%= f.radio_button :vc_status, "available", class: "form-check-input" %>
+          <%= f.label "VC可能", class: "form-check-label me-2" %>
+        </td>
+      </tr>
+      <tr>
+        <td>利用可能なボイスチャット</td>
+        <td>
+          <%= f.check_box :vc_discord, class: "form-check-input" %>
+          <%= f.label "Discord", class: "form-check-label me-2" %>
+          <%= f.check_box :vc_skype, class: "form-check-input" %>
+          <%= f.label "Skype", class: "form-check-label me-2" %>
+          <%= f.check_box :vc_leaguevoice, class: "form-check-input" %>
+          <%= f.label "リーグボイス", class: "form-check-label" %>
+        </td>
+      </tr>
+
     </table>
 
-    <div class="text-center"><%= f.submit "プロフィール更新", class: "btn btn-success me-3" %><%= link_to "戻る", :back, class: "btn btn-secondary" %></div>
+    <div class="text-center"><%= f.submit "投稿する", class: "btn btn-success me-3" %><%= link_to "戻る", :back, class: "btn btn-secondary" %></div>
     <% end %>
   </div>
 </div>

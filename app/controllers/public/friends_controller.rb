@@ -1,7 +1,8 @@
 class Public::FriendsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
-
+    @user = User.find(current_user.id)
   end
 
   def show
@@ -10,7 +11,12 @@ class Public::FriendsController < ApplicationController
 
   def new
     @user = User.find(current_user.id)
-    @friend = Friend.new
+
+    if Friend.find_by(user_id: current_user.id)
+      redirect_to edit_public_friend_path(@user), notice: "すでに投稿済みです"
+    else
+      @friend = Friend.new
+    end
 
   end
 
@@ -23,7 +29,15 @@ class Public::FriendsController < ApplicationController
   end
 
   def create
+    @user = User.find(current_user.id)
+    @friend = Friend.new(friend_params)
+    @friend.user_id = current_user.id
 
+    if @friend.save
+      redirect_to public_friends_path, notice: "投稿しました"
+    else
+      render "new"
+    end
   end
 
   def destroy

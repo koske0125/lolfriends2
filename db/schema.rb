@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_23_080125) do
+ActiveRecord::Schema.define(version: 2022_06_23_135825) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2022_06_23_080125) do
     t.boolean "good_at_mid", default: false, null: false
     t.boolean "good_at_adc", default: false, null: false
     t.boolean "good_at_sup", default: false, null: false
-    t.string "active_time", default: "f", null: false
+    t.string "active_time", default: "", null: false
     t.string "twitter"
     t.integer "vc_status", default: 0, null: false
     t.boolean "vc_discord", default: false, null: false
