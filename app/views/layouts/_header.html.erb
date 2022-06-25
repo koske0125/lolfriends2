@@ -3,12 +3,11 @@
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 text-white">ホーム</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">特徴</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">価格設定</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">FAQ</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">概要</a></li>
-          <li><%= link_to "新規投稿",  new_public_friend_path, class:"nav-link px-2 text-white" %></li>
+          <li><%= link_to "フレンド募集一覧", public_friends_path, class: "nav-link px-2 text-white" %></li>
+          <li><%= link_to "コミュニティーボード", "#", class: "nav-link px-2 text-white" %></li>
+          <li><%= link_to "サークル", "#", class: "nav-link px-2 text-white" %></li>
+          <li><%= link_to "League of Friendsについて", "#", class: "nav-link px-2 text-white" %></li>
+          <li><%= link_to "お問い合わせ", "#", class: "nav-link px-2 text-white" %></li>
         </ul>
 
         <% if user_signed_in? %>
@@ -25,8 +24,10 @@
 
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
             <li><%= link_to "プロフィール", public_user_path(current_user.id), class: "dropdown-item" %></li>
-            <li><a class="dropdown-item" href="#">設定</a></li>
-            <li><a class="dropdown-item" href="#">プロフィール</a></li>
+            <li><%= link_to "フレンド募集", new_public_friend_path, class: "dropdown-item" %></li>
+            <li><%= link_to "フォロー・フォロワー一覧", "#", class: "dropdown-item" %></li>
+            <li><%= link_to "ダイレクトメッセージ", "#", class: "dropdown-item" %></li>
+            <li><%= link_to "マイサークル", "#", class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
             <li><%= link_to "サインアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
           </ul>
