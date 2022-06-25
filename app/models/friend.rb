@@ -24,7 +24,7 @@ class Friend < ApplicationRecord
                             twitch: 131, udyr: 132, urgot: 133, varus: 134, vayne: 135, veiger: 136, velkoz: 137, vex: 138, vi: 139, viego: 140, viktor: 141, vladmir: 142, volibear: 143, warwick: 144, wukong: 145, xayah: 146, xerath: 147,
                             xin_zhao: 148, yasuo: 149, yone: 150, yorick: 151, yuumi: 152, zac: 153, zed: 154, zeri: 155, ziggs: 156, zilean: 157, zoe: 158, zyra: 159 }, _prefix: true
 
-  enum favorite_champion3: { aatrox: 0, ahri: 1, akali: 2, akshan: 3, alistar: 4, amumu: 5, anivia: 6, annie: 7, aphelios: 8, ashe: 9, aurelion_sol: 10, azir: 11, bard: 12, belveth: 13, blitzcrank: 14, brand: 15, braum: 16,
+  enum fovorite_champion3: { aatrox: 0, ahri: 1, akali: 2, akshan: 3, alistar: 4, amumu: 5, anivia: 6, annie: 7, aphelios: 8, ashe: 9, aurelion_sol: 10, azir: 11, bard: 12, belveth: 13, blitzcrank: 14, brand: 15, braum: 16,
                             caitlyn: 17, camille: 18, cassiopea: 19, chogath: 20, corki: 21, darius: 22, diana: 23, dr_mundo: 24, draven: 25, ekko: 26, elise: 27, evelynn: 28, ezreal: 29, fiddlesticks: 30, fiora: 31, fizz: 32,
                             galio: 33, gangplank: 34, garen: 35, gnar: 36, gragas: 37, graves: 38, gwen: 39, hecarim: 40, heimerdinger: 41, illaoi: 42, irellia: 43, ivern: 44, janna: 45, jarvan_iv: 46, jax: 47, jayce: 48, jhin: 49,
                             jinx: 50, kaisa: 51, kalista: 52, karma: 53, karthus: 54, kassadin: 55, katarina: 56, kayle: 57, kayn: 58, kennen: 59, khazix: 60, kindred: 61, kled: 62, kogmaw: 63, leblanc: 64, leesin: 65, leona: 66,
@@ -41,6 +41,5 @@ class Friend < ApplicationRecord
 
   validates :introduction, :active_time, presence: true
   validates :introduction, length: { maximum: 500 }
-  validates :twitter, format: { with: /\A[a-zA-Z0-9_@-]+\z/ }
 
 end

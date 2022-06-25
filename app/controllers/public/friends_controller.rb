@@ -3,6 +3,7 @@ class Public::FriendsController < ApplicationController
 
   def index
     @user = User.find(current_user.id)
+    @friends = Friend.all
   end
 
   def show
@@ -21,11 +22,19 @@ class Public::FriendsController < ApplicationController
   end
 
   def edit
-
+    @user = User.find(current_user.id)
+    @friend = Friend.find_by(user_id: current_user.id)
   end
 
   def update
+    @user = User.find(current_user.id)
+    @friend = Friend.find_by(user_id: current_user.id)
 
+    if @friend.update(friend_params)
+      redirect_to public_friends_path, notice: "投稿しました"
+    else
+      render "edit"
+    end
   end
 
   def create
@@ -47,7 +56,7 @@ class Public::FriendsController < ApplicationController
   private
 
   def friend_params
-    params.require(:friend).permit(:user_id, :favorite_champion, :favorite_champion2, :favorite_champion3, :introduction, :rank, :is_rank, :is_normal, :is_beginner, :is_coaching, :is_coached, :is_clash, :good_at_top, :good_at_jg, :good_at_mid, :good_at_adc, :good_at_sup, :bad_at_top, :bad_at_jg, :bad_at_mid, :bad_at_adc, :bad_at_sup, :active_time, :twitter, :vc_status, :vc_discord, :vc_skype, :vc_leaguevoice)
+    params.require(:friend).permit(:user_id, :favorite_champion, :favorite_champion2, :fovorite_champion3, :introduction, :rank, :is_rank, :is_normal, :is_beginner, :is_coaching, :is_coached, :is_clash, :good_at_top, :good_at_jg, :good_at_mid, :good_at_adc, :good_at_sup, :bad_at_top, :bad_at_jg, :bad_at_mid, :bad_at_adc, :bad_at_sup, :active_time, :twitter, :vc_status, :vc_discord, :vc_skype, :vc_leaguevoice)
   end
 
 end

@@ -1,0 +1,125 @@
+<div class="container-fluid">
+
+  <div class="col-12 col-md-8 col-lg-6 col-xl-4 mx-auto mt-3">
+    <h2 class="mt-3">投稿編集</h2>
+    <% if @friend.errors.any? %>
+    <%= @friend.errors.count %>件のエラーが発生しました
+    <ul>
+    <% @friend.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+    <% end %>
+
+    <%= form_with model: @friend, url: public_friend_path(@friend), method: :patch do |f| %>
+    <table class="table mt-3">
+      <tr>
+        <td>好きなチャンピオン(1体目)</td>
+        <td>
+          <%= f.select :favorite_champion, Friend.favorite_champions.keys.map {|k| [I18n.t("enums.friend.favorite_champions.#{k}"), k]}, {}, class: "form-select" %>
+        </td>
+      </tr>
+      <tr>
+        <td>好きなチャンピオン(2体目)</td>
+        <td>
+          <%= f.select :favorite_champion2, Friend.favorite_champion2s.keys.map {|k| [I18n.t("enums.friend.favorite_champion2s.#{k}"), k]}, {}, class: "form-select" %>
+        </td>
+      </tr>
+      <tr>
+        <td>好きなチャンピオン(3体目)</td>
+        <td>
+          <%= f.select :fovorite_champion3, Friend.fovorite_champion3s.keys.map {|k| [I18n.t("enums.friend.fovorite_champion3s.#{k}"), k]}, {}, class: "form-select" %>
+        </td>
+      </tr>
+      <tr>
+        <td>自己紹介(500文字まで)</td>
+        <td><%= f.text_area :introduction, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <td>ランク</td>
+        <td><%= f.select :rank, Friend.ranks.keys.map {|k| [I18n.t("enums.friend.ranks.#{k}"), k]}, {}, class: "form-select" %></td>
+      </tr>
+      <tr>
+        <td>募集目的</td>
+        <td>
+          <%= f.check_box :is_rank, class: "form-check-input" %>
+          <%= f.label "ランク", class: "form-check-label me-2" %>
+          <%= f.check_box :is_normal, class: "form-check-input" %>
+          <%= f.label "ノーマル", class: "form-check-label me-2" %>
+          <%= f.check_box :is_beginner, class: "form-check-input" %>
+          <%= f.label "初心者", class: "form-check-label me-2" %><br />
+          <%= f.check_box :is_coaching, class: "form-check-input" %>
+          <%= f.label "コーチングしたい", class: "form-check-label me-2" %>
+          <%= f.check_box :is_coached, class: "form-check-input" %>
+          <%= f.label "コーチングを受けたい", class: "form-check-label me-2" %>
+          <%= f.check_box :is_clash, class: "form-check-input" %>
+          <%= f.label "Clash", class: "form-check-label" %>
+        </td>
+      </tr>
+      <tr>
+        <td>得意なレーン</td>
+        <td>
+          <%= f.check_box :good_at_top, class: "form-check-input" %>
+          <%= f.label "TOP", class: "form-check-label me-2" %>
+          <%= f.check_box :good_at_jg, class: "form-check-input" %>
+          <%= f.label "JG", class: "form-check-label me-2" %>
+          <%= f.check_box :good_at_mid, class: "form-check-input" %>
+          <%= f.label "MID", class: "form-check-label me-2" %>
+          <%= f.check_box :good_at_adc, class: "form-check-input" %>
+          <%= f.label "ADC", class: "form-check-label me-2" %>
+          <%= f.check_box :good_at_sup, class: "form-check-input" %>
+          <%= f.label "SUP", class: "form-check-label" %>
+        </td>
+      </tr>
+      <tr>
+        <td>苦手なレーン</td>
+        <td>
+          <%= f.check_box :bad_at_top, class: "form-check-input" %>
+          <%= f.label "TOP", class: "form-check-label me-2" %>
+          <%= f.check_box :bad_at_jg, class: "form-check-input" %>
+          <%= f.label "JG", class: "form-check-label me-2" %>
+          <%= f.check_box :bad_at_mid, class: "form-check-input" %>
+          <%= f.label "MID", class: "form-check-label me-2" %>
+          <%= f.check_box :bad_at_adc, class: "form-check-input" %>
+          <%= f.label "ADC", class: "form-check-label me-2" %>
+          <%= f.check_box :bad_at_sup, class: "form-check-input" %>
+          <%= f.label "SUP", class: "form-check-label" %>
+        </td>
+      </tr>
+      <tr>
+        <td>活動時間帯</td>
+        <td><%= f.text_field :active_time, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <td>Twitter(未記入可)</td>
+        <td><%= f.text_field :twitter, class: "form-control" %></td>
+      </tr>
+      <tr>
+        <td>ボイスチャット</td>
+        <td>
+          <%= f.radio_button :vc_status, "unavailable", class: "form-check-input" %>
+          <%= f.label "VC不可", class: "form-check-label me-2" %>
+          <%= f.radio_button :vc_status, "listening_only", class: "form-check-input" %>
+          <%= f.label "聴き専", class: "form-check-label me-2" %>
+          <%= f.radio_button :vc_status, "available", class: "form-check-input" %>
+          <%= f.label "VC可能", class: "form-check-label me-2" %>
+        </td>
+      </tr>
+      <tr>
+        <td>利用可能なボイスチャット</td>
+        <td>
+          <%= f.check_box :vc_discord, class: "form-check-input" %>
+          <%= f.label "Discord", class: "form-check-label me-2" %>
+          <%= f.check_box :vc_skype, class: "form-check-input" %>
+          <%= f.label "Skype", class: "form-check-label me-2" %>
+          <%= f.check_box :vc_leaguevoice, class: "form-check-input" %>
+          <%= f.label "リーグボイス", class: "form-check-label" %>
+        </td>
+      </tr>
+
+    </table>
+
+    <div class="text-center"><%= f.submit "投稿する", class: "btn btn-success me-3" %><%= link_to "戻る", :back, class: "btn btn-secondary" %></div>
+    <% end %>
+  </div>
+</div>
