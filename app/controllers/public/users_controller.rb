@@ -22,6 +22,13 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  def withdraw
+    @user = User.find(current_user.id)
+    @user.update(is_deleted: true)
+    reset_session
+    redirect_to public_path, notice: "退会処理を実行いたしました"
+  end
+
   private
 
   def user_params

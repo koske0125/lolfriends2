@@ -59,6 +59,7 @@ gem 'devise'
 gem "enum_help"
 
 gem 'dotenv-rails'
+gem 'ransack'
 
 group :production do
   gem 'mysql2'
