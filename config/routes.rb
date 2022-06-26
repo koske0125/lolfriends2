@@ -22,7 +22,7 @@ devise_for :admin, controllers: {
 
 # get '/customers/is_deleted' => 'public/customers#is_deleted'
   namespace :public, path: "" do
-    get '/' => 'homes#top'
+    get '/' => 'friends#index'
     get '/user/withdraw' => 'users#withdraw'
     resources :users, only: [:edit, :show, :update]
       resource :relationships, only: [:create, :destroy]
