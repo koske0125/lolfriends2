@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>メールアドレス</th>
+        <th>サモナーネーム</th>
+        <th>サモナーネーム公開設定</th>
+        <th>承認状況</th>
+        <th>退会ステータス</th>
+        <th>編集</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.summoner_name %></td>
+        <td><%= user.is_published_i18n %></td>
+        <td><% if user.authenticate == false %>未認証<% else %> 認証済み <% end %></td>
+        <td><% if user.is_deleted == false %>有効<% else %>退会済み<% end %></td>
+        <td><%= link_to "編集", edit_admin_user_path(user), class: "btn btn-success" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

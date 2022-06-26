@@ -1,0 +1,57 @@
+<div class="container-fluid">
+  <h2>投稿一覧</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @friends.each do |friend| %>
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">自己紹介</h5>
+          <p class="card-text">
+          <% if friend.user.profile_image.attached? %>
+            <%= image_tag friend.user.profile_image, size: "64x64", class: "rounded-circle me-2" %>
+          <% else %>
+            <%= image_tag asset_path("no_image.jpg"), size: "64x64", class: "rounded-circle me-2" %>
+          <% end %><%= friend.introduction %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>サモナーネーム:　</strong><% if friend.user.is_published == "closed" %>非公開<% elsif friend.user.is_published == "limited" %>相互フォローにのみ公開<% else %><%= friend.user.summoner_name %><% end %></li>
+          <li class="list-group-item"><strong>好きなチャンピオン:　</strong><%= friend.favorite_champion_i18n %>　<%= friend.favorite_champion2_i18n %>　<%= friend.fovorite_champion3_i18n %></li>
+          <li class="list-group-item"><strong>ランク:　</strong><%= friend.rank_i18n %></li>
+          <li class="list-group-item"><strong>募集目的:　</strong>
+            <% if friend.is_rank == true %>ランク　<% end %>
+            <% if friend.is_normal == true %>ノーマル　<% end %>
+            <% if friend.is_beginner == true %>初心者　<% end %>
+            <% if friend.is_coaching == true %>コーチングをしたい　<% end %>
+            <% if friend.is_coached == true %>コーチングを受けたい　<% end %>
+            <% if friend.is_clash == true %>Clash　<% end %>
+          </li>
+          <li class="list-group-item"><strong>得意なレーン:　</strong>
+            <% if friend.good_at_top == true %>TOP　<% end %>
+            <% if friend.good_at_jg == true %>JG　<% end %>
+            <% if friend.good_at_mid == true %>MID　<% end %>
+            <% if friend.good_at_adc == true %>ADC　<% end %>
+            <% if friend.good_at_sup == true %>SUP　<% end %>
+          </li>
+          <li class="list-group-item"><strong>苦手なレーン:　</strong>
+            <% if friend.bad_at_top == true %>TOP　<% end %>
+            <% if friend.bad_at_jg == true %>JG　<% end %>
+            <% if friend.bad_at_mid == true %>MID　<% end %>
+            <% if friend.bad_at_adc == true %>ADC　<% end %>
+            <% if friend.bad_at_sup == true %>SUP　<% end %>
+          </li>
+          <li class="list-group-item"><strong>活動時間帯:　</strong><%= friend.active_time %></li>
+          <li class="list-group-item"><strong>Twitter:　</strong><%= friend.twitter %></li>
+          <li class="list-group-item"><strong>ボイスチャット利用:　</strong><% if friend.vc_status == "unavailable" %>VC不可<% elsif friend.vc_status == "listening_only" %>聴き専<% else %>VC可能<% end %></li>
+          <li class="list-group-item"><strong>利用可能なボイスチャット:　</strong><% if friend.vc_status != "unavailable" %><% if friend.vc_discord == true %>Discord　<% end %><% if friend.vc_skype == true %>Skype　<% end %><% if friend.vc_leaguevoice == true %>リーグボイス<% end %><% end %></li>
+          <li class="list-group-item"><strong>最終ログイン日時：　</strong><%= friend.user.current_sign_in_at.strftime('%Y/%m/%d %R') %></li>
+        </ul>
+
+        <p class="card-text text-center"><%= link_to "編集する", edit_admin_friend_path(friend), class: "btn btn-success" %></p>
+
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+
+</div>

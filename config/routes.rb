@@ -16,6 +16,8 @@ devise_for :admin, controllers: {
 
   namespace :admin do
     get '/' => 'homes#top'
+    resources :users
+    resources :friends
   end
 
 # get '/customers/is_deleted' => 'public/customers#is_deleted'
