@@ -1,5 +1,5 @@
 class Public::FriendsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :search]
+  before_action :authenticate_user!, except: [:index, :show, :is_rank, :is_normal, :is_beginner, :is_coaching, :is_coached, :is_clash]
   before_action :set_q, only: [:index, :search]
 
 
